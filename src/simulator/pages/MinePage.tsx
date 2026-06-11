@@ -28,7 +28,7 @@ export default function MinePage() {
       </div>
 
       {/* 功能菜单 */}
-      <div className="px-5 -mt-4">
+      <div className="px-5 mt-10">
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
           {/* 我的预约 */}
           <button

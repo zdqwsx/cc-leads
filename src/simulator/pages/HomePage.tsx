@@ -5,27 +5,9 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col h-full bg-[#F7F8FA]">
-      {/* 头部渐变区域 */}
-      <div className="relative px-5 pt-3 pb-8" style={{ background: 'linear-gradient(135deg, #FF6B35 0%, #FF9B5A 100%)' }}>
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-white mb-1">首页</h1>
-            <p className="text-sm text-white/70">销售leads管理系统</p>
-          </div>
-          <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-          </div>
-        </div>
-        {/* 装饰 */}
-        <div className="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-white/10" />
-      </div>
-
       {/* 功能入口 */}
-      <div className="flex-1 px-5 -mt-4 pb-20">
-        <div className="grid grid-cols-2 gap-3">
+      <div className="flex-1 px-5 pb-20 flex flex-col items-center justify-center gap-4">
+        <div className="w-full grid grid-cols-2 gap-3">
           {/* leads 管理 */}
           <button
             onClick={() => navigateTo('leads-manage')}
@@ -63,7 +45,7 @@ export default function HomePage() {
         </div>
 
         {/* 快捷信息卡片 */}
-        <div className="mt-4 bg-white rounded-2xl p-5 shadow-sm">
+        <div className="w-full bg-white rounded-2xl p-5 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-semibold text-[#1F2329]">快捷操作</span>
           </div>
