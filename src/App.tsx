@@ -5,6 +5,7 @@ import PageView from '@/pages/PageView';
 import PageList from '@/components/PageCard/PageList';
 import FlowList from '@/pages/FlowList';
 import FlowView from '@/pages/FlowView';
+import SimulatorView from '@/pages/SimulatorView';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="/page/:id" element={<PageView />} />
           <Route path="/flows" element={<FlowList />} />
           <Route path="/flow/:flowId" element={<FlowView />} />
+          <Route path="/simulator" element={<SimulatorView />} />
         </Route>
       </Routes>
     </Router>

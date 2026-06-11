@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getFlowById } from '@/data/flows';
 import { getPageById, categoryColors } from '@/data/pages';
 import { useFlowStore } from '@/store/useFlowStore';
+import { useSimulatorStore } from '@/simulator/useSimulatorStore';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -12,6 +13,8 @@ import {
   Circle,
   ArrowLeft,
   Play,
+  Smartphone,
+  Image,
 } from 'lucide-react';
 import PhoneFrame from '@/components/PhoneFrame/PhoneFrame';
 
@@ -20,7 +23,9 @@ export default function FlowView() {
   const navigate = useNavigate();
   const flow = getFlowById(flowId || '');
   const { currentStepIndex, setFlow, nextStep, prevStep, reset } = useFlowStore();
+  const { resetNavigation: resetSimulator } = useSimulatorStore();
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
+  const [simulatorMode, setSimulatorMode] = useState(false);
 
   useEffect(() => {
     if (flowId) {
@@ -82,6 +87,32 @@ export default function FlowView() {
           <RotateCcw size={14} />
           重新开始
         </button>
+        {/* 模式切换 */}
+        <button
+          onClick={() => {
+            if (!simulatorMode) {
+              resetSimulator();
+            }
+            setSimulatorMode(!simulatorMode);
+          }}
+          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm transition-all shadow-sm border ${
+            simulatorMode
+              ? 'bg-[#0089FF] text-white border-[#0089FF]'
+              : 'bg-white border-gray-100 text-gray-600 hover:border-[#0089FF]/30 hover:text-[#0089FF]'
+          }`}
+        >
+          {simulatorMode ? (
+            <>
+              <Image size={14} />
+              截图模式
+            </>
+          ) : (
+            <>
+              <Smartphone size={14} />
+              交互模拟
+            </>
+          )}
+        </button>
       </div>
 
       {/* 步骤进度条 */}
@@ -137,7 +168,7 @@ export default function FlowView() {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
             >
-              <PhoneFrame imageUrl={currentPage?.uiImages?.[0]} />
+              <PhoneFrame imageUrl={currentPage?.uiImages?.[0]} simulatorMode={simulatorMode} />
             </motion.div>
           </AnimatePresence>
         </div>

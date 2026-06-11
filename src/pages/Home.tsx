@@ -18,6 +18,7 @@ import {
   TrendingUp,
   ChevronDown,
   ChevronUp,
+  Smartphone,
 } from 'lucide-react';
 import type { PageData } from '@/data/pages';
 
@@ -202,8 +203,19 @@ export default function Home() {
                 }}
               >
                 <Play size={16} />
-                流程模拟
-              </Link>
+              流程模拟
+            </Link>
+            <Link
+              to="/simulator"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm shadow-lg"
+              style={{
+                background: 'linear-gradient(135deg, #FF6B35 0%, #FF8F5A 100%)',
+                boxShadow: '0 8px 24px rgba(255, 107, 53, 0.35)',
+              }}
+            >
+              <Smartphone size={16} />
+              交互模拟
+            </Link>
             </div>
           </div>
 

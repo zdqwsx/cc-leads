@@ -1,11 +1,12 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { LayoutDashboard, FileText, PlayCircle, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import { LayoutDashboard, FileText, PlayCircle, Smartphone, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 
 const navItems = [
   { to: '/', icon: LayoutDashboard, label: '流程全景' },
   { to: '/pages', icon: FileText, label: '页面列表' },
   { to: '/flows', icon: PlayCircle, label: '流程模拟' },
+  { to: '/simulator', icon: Smartphone, label: '操作演示' },
 ];
 
 export default function Sidebar() {
