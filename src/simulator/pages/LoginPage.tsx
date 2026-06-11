@@ -15,7 +15,7 @@ export default function LoginPage() {
   return (
     <div className="flex flex-col h-full bg-white">
       {/* 顶部渐变区域 */}
-      <div className="relative pt-14 pb-20 px-8" style={{ background: 'linear-gradient(135deg, #FF6B35 0%, #FF9B5A 50%, #FFB88C 100%)' }}>
+      <div className="relative pt-14 pb-10 px-8" style={{ background: 'linear-gradient(135deg, #FF6B35 0%, #FF9B5A 50%, #FFB88C 100%)' }}>
         <h1 className="text-3xl font-bold text-white mb-2">Hello!</h1>
         <p className="text-sm text-white/80">欢迎来到销售leads系统</p>
         {/* 装饰圆 */}
@@ -24,7 +24,7 @@ export default function LoginPage() {
       </div>
 
       {/* 登录表单卡片 */}
-      <div className="flex-1 px-6 -mt-10">
+      <div className="flex-1 px-6 -mt-6">
         <div className="bg-white rounded-2xl pt-8 pb-6 shadow-lg shadow-black/5">
           <h2 className="text-xl font-bold text-center text-[#1F2329] mb-8">登录</h2>
 
@@ -63,12 +63,12 @@ export default function LoginPage() {
                 value={loginCode}
                 onChange={(e) => setLoginCode(e.target.value)}
                 maxLength={6}
-                className="flex-1 bg-transparent text-sm text-[#1F2329] placeholder:text-[#ccc] outline-none"
+                className="w-20 bg-transparent text-sm text-[#1F2329] placeholder:text-[#ccc] outline-none"
               />
               <button
                 onClick={sendCode}
                 disabled={codeSent && countdown > 0}
-                className={`text-sm whitespace-nowrap ml-3 shrink-0 px-2 py-1 rounded-lg transition-colors ${
+                className={`text-xs whitespace-nowrap ml-auto px-2 py-1.5 rounded-lg transition-colors ${
                   codeSent && countdown > 0
                     ? 'text-[#ccc] bg-[#F7F8FA]'
                     : 'text-[#FF6B35] bg-[#FF6B35]/8 active:bg-[#FF6B35]/15'
