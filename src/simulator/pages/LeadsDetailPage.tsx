@@ -56,7 +56,7 @@ export default function LeadsDetailPage() {
         <input
           value={value}
           onChange={(e) => updateEditForm({ [fieldKey]: e.target.value })}
-          className="flex-1 text-sm text-right text-[#1F2329] outline-none bg-[#F7F8FA] rounded-lg px-3 py-1.5 ml-4 text-right"
+          className="w-[140px] text-sm text-right text-[#1F2329] outline-none bg-[#F7F8FA] rounded-lg px-3 py-1.5 ml-4"
         />
       ) : (
         <span className="text-sm text-[#666] ml-4 text-right truncate">{value || '-'}</span>
@@ -73,7 +73,7 @@ export default function LeadsDetailPage() {
         <select
           value={value}
           onChange={(e) => updateEditForm({ [fieldKey]: e.target.value })}
-          className="text-sm text-right text-[#1F2329] outline-none bg-[#F7F8FA] rounded-lg px-3 py-1.5 appearance-none ml-4"
+          className="w-[140px] text-sm text-right text-[#1F2329] outline-none bg-[#F7F8FA] rounded-lg px-3 py-1.5 appearance-none ml-4"
         >
           {options.map((opt) => (
             <option key={opt} value={opt}>{opt}</option>
@@ -106,7 +106,7 @@ export default function LeadsDetailPage() {
       </div>
 
       {/* 详情内容 */}
-      <div className="flex-1 overflow-y-auto px-4 py-3 pb-24">
+      <div className={`flex-1 overflow-y-auto px-4 py-3 ${isEditing ? '' : 'pb-24'}`}>
         {/* 学生信息头部卡片 */}
         <div className="bg-white rounded-xl p-4 mb-3 shadow-sm">
           <div className="flex items-center gap-3 mb-3">
@@ -171,36 +171,38 @@ export default function LeadsDetailPage() {
         </div>
       </div>
 
-      {/* 底部操作栏 */}
-      <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-[#F0F0F0] px-4 py-3 pb-8 flex gap-2">
-        <button
-          onClick={() => setShowFollowRecordsModal(true)}
-          className="flex-1 py-2.5 rounded-xl border border-[#E5E5E5] text-[#666] text-sm active:bg-[#F7F8FA] transition-colors"
-        >
-          follow记录
-        </button>
-        <button
-          onClick={() => {
-            useSimulatorStore.getState().resetFollowForm();
-            setShowAddFollowModal(true);
-          }}
-          className="flex-1 py-2.5 rounded-xl border border-[#FF6B35] text-[#FF6B35] text-sm active:bg-[#FFF5F0] transition-colors"
-        >
-          新增follow
-        </button>
-        {canBook && (
+      {/* 底部操作栏 - 非编辑状态显示 */}
+      {!isEditing && (
+        <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-[#F0F0F0] px-4 py-3 pb-8 flex gap-2">
+          <button
+            onClick={() => setShowFollowRecordsModal(true)}
+            className="flex-1 py-2.5 rounded-xl border border-[#E5E5E5] text-[#666] text-sm active:bg-[#F7F8FA] transition-colors"
+          >
+            follow记录
+          </button>
           <button
             onClick={() => {
-              useSimulatorStore.getState().resetAppointmentForm();
-              setShowAppointmentModal(true);
+              useSimulatorStore.getState().resetFollowForm();
+              setShowAddFollowModal(true);
             }}
-            className="flex-1 py-2.5 rounded-xl text-white text-sm shadow-sm active:scale-[0.98] transition-transform"
-            style={{ background: 'linear-gradient(135deg, #FF6B35 0%, #FF8F5A 100%)' }}
+            className="flex-1 py-2.5 rounded-xl border border-[#FF6B35] text-[#FF6B35] text-sm active:bg-[#FFF5F0] transition-colors"
           >
-            预约
+            新增follow
           </button>
-        )}
-      </div>
+          {canBook && (
+            <button
+              onClick={() => {
+                useSimulatorStore.getState().resetAppointmentForm();
+                setShowAppointmentModal(true);
+              }}
+              className="flex-1 py-2.5 rounded-xl text-white text-sm shadow-sm active:scale-[0.98] transition-transform"
+              style={{ background: 'linear-gradient(135deg, #FF6B35 0%, #FF8F5A 100%)' }}
+            >
+              预约到店
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }

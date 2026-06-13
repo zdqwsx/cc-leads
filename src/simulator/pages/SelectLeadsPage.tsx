@@ -75,7 +75,7 @@ export default function SelectLeadsPage() {
           <button
             key={key}
             onClick={() => setSortBy(key)}
-            className={`px-3.5 py-1.5 rounded-full text-xs flex items-center gap-1 transition-all active:scale-[0.97] ${
+            className={`px-3 py-1 rounded-full text-[10px] flex items-center gap-0.5 transition-all active:scale-[0.97] whitespace-nowrap shrink-0 ${
               sortBy === key
                 ? 'text-white shadow-sm'
                 : 'bg-[#F7F8FA] text-[#666]'

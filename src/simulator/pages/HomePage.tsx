@@ -21,8 +21,8 @@ export default function HomePage() {
                 <line x1="16" y1="17" x2="8" y2="17" />
               </svg>
             </div>
-            <span className="text-sm font-semibold text-[#1F2329]">leads 管理</span>
-            <span className="text-xs text-[#999]">管理所有线索</span>
+            <span className="text-xs font-semibold text-[#1F2329] whitespace-nowrap">leads管理</span>
+            <span className="text-xs text-[#999] whitespace-nowrap">管理所有线索</span>
           </button>
 
           {/* 新增 follow */}
@@ -39,15 +39,15 @@ export default function HomePage() {
                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
               </svg>
             </div>
-            <span className="text-sm font-semibold text-[#1F2329]">新增 follow</span>
-            <span className="text-xs text-[#999]">添加跟进记录</span>
+            <span className="text-xs font-semibold text-[#1F2329] whitespace-nowrap">新增follow</span>
+            <span className="text-xs text-[#999] whitespace-nowrap">添加跟进记录</span>
           </button>
         </div>
 
         {/* 快捷信息卡片 */}
         <div className="w-full bg-white rounded-2xl p-5 shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-sm font-semibold text-[#1F2329]">快捷操作</span>
+            <span className="text-sm font-semibold text-[#1F2329] whitespace-nowrap">快捷操作</span>
           </div>
           <div className="grid grid-cols-3 gap-3">
             <button
@@ -62,7 +62,7 @@ export default function HomePage() {
                   <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
               </div>
-              <span className="text-xs text-[#666]">我的预约</span>
+              <span className="text-xs text-[#666] whitespace-nowrap">我的预约</span>
             </button>
             <button
               onClick={() => {
@@ -78,7 +78,7 @@ export default function HomePage() {
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
               </div>
-              <span className="text-xs text-[#666]">搜索线索</span>
+              <span className="text-xs text-[#666] whitespace-nowrap">搜索线索</span>
             </button>
             <button
               onClick={() => setActiveTab('mine')}
@@ -90,7 +90,7 @@ export default function HomePage() {
                   <circle cx="12" cy="7" r="4" />
                 </svg>
               </div>
-              <span className="text-xs text-[#666]">个人中心</span>
+              <span className="text-xs text-[#666] whitespace-nowrap">个人中心</span>
             </button>
           </div>
         </div>

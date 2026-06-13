@@ -20,7 +20,7 @@ export default function LeadsManagePage() {
   const sortLabels: Record<SortBy, string> = {
     createdAt: '创建时间',
     assignedAt: '分配时间',
-    lastFollowAt: '最后follow',
+    lastFollowAt: '最近时间',
   };
 
   return (
@@ -32,7 +32,7 @@ export default function LeadsManagePage() {
             <polyline points="15 18 9 12 15 6" />
           </svg>
         </button>
-        <h1 className="text-lg font-semibold text-[#1F2329]">leads 管理</h1>
+        <h1 className="text-lg font-semibold text-[#1F2329] whitespace-nowrap">leads管理</h1>
         <button
           onClick={() => {
             useSimulatorStore.getState().setSearchFrom('leads-manage');
@@ -49,12 +49,12 @@ export default function LeadsManagePage() {
       </div>
 
       {/* 排序条件 */}
-      <div className="bg-white px-4 py-2.5 flex gap-2 border-t border-[#F5F5F5]">
+      <div className="bg-white px-4 py-2 flex gap-1.5 border-t border-[#F5F5F5]">
         {(Object.keys(sortLabels) as SortBy[]).map((key) => (
           <button
             key={key}
             onClick={() => setSortBy(key)}
-            className={`px-3.5 py-1.5 rounded-full text-xs flex items-center gap-1 transition-all active:scale-[0.97] ${
+            className={`px-3 py-1 rounded-full text-xs flex items-center gap-1 transition-all active:scale-[0.97] whitespace-nowrap ${
               sortBy === key
                 ? 'text-white shadow-sm'
                 : 'bg-[#F7F8FA] text-[#666]'
@@ -82,15 +82,15 @@ export default function LeadsManagePage() {
           >
             {/* 学生信息头部 */}
             <div className="flex items-center justify-between mb-2.5">
-              <div className="flex items-center gap-2">
-                <span className="text-base font-bold text-[#1F2329]">{lead.nameCn}</span>
-                <span className="text-sm text-[#666]">{lead.nameEn}</span>
-                <span className={`text-sm ${lead.gender === '男' ? 'text-[#4A90D9]' : 'text-[#E8729A]'}`}>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-base font-bold text-[#1F2329] whitespace-nowrap">{lead.nameCn}</span>
+                <span className="text-xs text-[#666] whitespace-nowrap">{lead.nameEn}</span>
+                <span className={`text-xs ${lead.gender === '男' ? 'text-[#4A90D9]' : 'text-[#E8729A]'}`}>
                   {lead.gender === '男' ? '\u2642' : '\u2640'}
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs px-2 py-0.5 rounded-full bg-[#FFF5F0] text-[#FF6B35]">{lead.lifeCycle}</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-[#FFF5F0] text-[#FF6B35] whitespace-nowrap">{lead.lifeCycle}</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ccc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="9 18 15 12 9 6" />
                 </svg>
@@ -98,28 +98,28 @@ export default function LeadsManagePage() {
             </div>
 
             {/* 手机号和校区 */}
-            <div className="flex items-center gap-4 text-xs text-[#999] mb-3">
-              <span className="flex items-center gap-1">
+            <div className="flex items-center gap-2 text-xs text-[#999] mb-3 flex-wrap">
+              <span className="flex items-center gap-1 whitespace-nowrap">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                 {lead.phoneMasked}
               </span>
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-1 whitespace-nowrap">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                 {lead.campus}
               </span>
-              <span className="text-[#999]">{lead.age}岁</span>
+              <span className="text-[#999] whitespace-nowrap">{lead.age}岁</span>
             </div>
 
             {/* 时间信息 */}
-            <div className="bg-[#F7F8FA] rounded-lg p-2.5 space-y-1.5">
+            <div className="bg-[#F7F8FA] rounded-lg p-2 space-y-1">
               {[
-                { label: '创建时间', value: lead.createdAt },
-                { label: '分配时间', value: lead.assignedAt },
-                { label: '最后 follow', value: lead.lastFollowAt },
+                { label: '创建', value: lead.createdAt },
+                { label: '分配', value: lead.assignedAt },
+                { label: '最后follow', value: lead.lastFollowAt },
               ].map((item) => (
                 <div key={item.label} className="flex items-center justify-between text-xs">
                   <span className="text-[#999]">{item.label}</span>
-                  <span className="text-[#666]">{item.value}</span>
+                  <span className="text-[#666] whitespace-nowrap">{item.value}</span>
                 </div>
               ))}
             </div>
